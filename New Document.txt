@@ -1,0 +1,289 @@
+brew = apple iOS
+
+
+Ruby is a language and 
+and rails is a framework
+Framework provides an environment 
+
+
+openssl 
+libyaml = manage yaml files
+gmp
+rust = language
+
+mise = version manager 
+
+
+
+By default rails uses SQL Lite DB
+    Lightweight built-in DB that works right out of the box
+    For small project or prototype it is recommended cause it requires zero setup
+
+ 
+## To create new rails project
+
+rails new myapp -d postgresql
+rails new myapp -d mysql
+rails new myapp
+
+
+
+bundle install
+bundler is another gem that actual manages the installation of other gems in your project
+
+
+## To run
+go inside your project
+rails s
+localhost 3000
+
+
+
+## You will get the full project structure 
+1. Web Server
+2. Connected DB
+3. All the files we would need in order to start building
+
+rails new magic_app
+cd magic_app
+rails s
+localhost 3000
+
+#rails built whole entire foundation
+bin/generate scaffold book title:string description:text
+
+bin/rails db:migrate
+
+
+
+
+
+
+
+rm -rf myapp/
+
+sudo rm -rf myapp/
+
+
+
+
+
+lets build to-do application "doable"
+
+Rails is an MVC (model, view, controller) web framework.
+Rails new command automatically sets up everything needed to implement a model, vies, and controller system.
+
+Rails includes a built-in web server called Puma for local development purposes
+
+app =>  directory is a heart/core of rails application
+models => these classes work closely with the DB and define its structure.
+view =>  defines the file that displays results to the user
+controller  => implements most of the logic for retrieving data to display in the view
+config {directory} => config directory is where all rail's configuration is defined.
+config > routes.rb  => this determines how rails handles request sent to your application
+Gemfile => a gem file defines all the packages needed by a developer
+{rails new command automatically installs all the gems needed to start a new application}
+
+
+Folder	    Purpose
+app/	    Holds models, views, and controllers
+config/	    Contains settings files like routes.rb and database.yml
+db/	        Stores database files and migrations
+
+
+
+
+rails generate scaffold Todo{which is a name of your application} name:string description:text  
+
+#### SCAFFOLD will generate:
+1. Todo model
+2. Views
+3. Controller
+4. Migration file
+5. Routes
+
+
+4. Migration File 
+
+Migration files are like version control for your database
+Command : 
+
+bin/rails db:migrate
+
+db>migrate> => new migration file will be created in this file it creates a table called "to-dos" and that this table contains two columns: name (string) and description (text field) which we have passed in URL 
+
+
+
+
+cd storage
+ls =>  development.sqlite3
+sqlite3 development.sqlite3
+
+
+
+
+5. Routes 
+config > routes 
+
+bin/rails routes 
+
+
+inside routes : 
+    get "/projects", to: "projects#index"
+
+after adding routes and search/projects , we get an error because rails is trying to load our projects controller but we haven't actually created it yet.
+
+#### so to add controller we have command
+
+bin/rails generate controller Projects
+
+rails will create app controllers project controller file, it also created a folder for our views under app views and basic test files
+
+Lets add controller
+    inside /controllers/project_controller.rb
+    define index {#index}
+
+
+What is Model?
+    a model is a ruby class that represents a table in the database
+
+bin/rails generate model Project name:string
+
+rails has generated everything we need to create a new model class called project and to update our DB to reflect this new table to database
+
+
+project model maps to the project's table in the database so if we call something like project.all, rails knows how to run the sql cmd {select all from project}
+
+
+bin/rails c
+c stands for console 
+{Loading development environment}
+ Project.all
+
+
+
+rails using active record, knows how to execute the proper sql query to get the project from our database based on what we're calling on the model
+this is the M {model}
+
+
+bin/rails c
+Project.create(name: "Plan a Vacation")
+    by doing so we're telling rails that we want to create a new instance of the project class with the name "plan a vacation" and save it to our DB
+    Rails is going to use our project model and it's going to create just the right query using active record then create this in our DB
+
+
+
+
+IMPORTANT
+
+Project.all
+Todo.find(params[:id])
+@project.update(name:"whatever")
+@project.destroy
+
+behind the scene these are all generating sql queries
+
+Active Records :
+    Active record is a part of rails that lets you use ruby to talk to your database instead of writing raw SQL queries, you just write methods, and active records converts them under the hood.
+    SO essentially, Active Record gives you expressive and secure tools for working with the data
+
+
+
+Partial is just a small reusable chunk of Vue Code 
+
+Flash is a special hash thatt rails gives you you can store msgs in it like success or error notice and rails will make them available on the next request. 
+
+
+//ERB 
+If you want some Ruby code executed, enclose it between <% and %>.
+If you want the result of the code execution to be printed out, as a part of the output, enclose the code between <%= and %>.
+
+ActionView Helpers Form Builder:-
+
+models are the databases you can you use whichever db you want to use no issues.
+Views are the web pages
+Controllers are the brains behind the scene
+
+app>assets => these include css files, javascript, images, 
+config>routes.rb => It is important, anytime we create a webpage it is route.
+
+//To run rails server :3000 port no is default
+rails s 
+rails server
+
+rails generate controller home index
+rails g controller home index
+
+rails routes
+
+
+
+
+routes - controller - View
+
+SINGULAR RESOURCE 
+single routes added manually
+
+RESOURCE ROUTING
+resources WILL MAKE 7 ROUTES to use 
+    index
+    edit
+    create
+    delete
+    update
+    new 
+    show
+
+For example:
+    resources :users
+
+    What it does            URL	                    Controller  action
+    List users	            GET /users	            index
+    Show form for new user	GET /users/new	        new
+    Create user	            POST /users	            create
+    Show one user	        GET /users/:id	        show
+    Show form to edit user	GET /users/:id/edit	    edit
+    Update user	            PATCH/PUT /users/:id	update
+    Delete user	            DELETE /users/:id	    destroy
+
+
+to check if routes are created or not 
+rails routes | grep user 
+
+//to create only those routes which are needed.
+resources :used do
+    resources :post, only: [:create, :new]
+end
+
+
+
+rails generate nodel 
+rails generate g
+
+    //IMPORTANT
+rails db:migrate
+rails db:migrate:status
+rails db:rollback
+ 
+
+
+
+User.create(
+    email: "test@gmail.com",
+    password: "123456",
+    password_confirmation: "123456"
+)
+
+
+
+##### User.all
+It returns me all Users present in DB.
+#######    User.all.pluck(:password_digest)
+It returns me all User's passwords which are filtered using bcrypt present in DB 
+
+password_digest gets filtered (shown as [FILTERED]) in Rails logs because it's a security measure to prevent sensitive, hashed passwords from being exposed in plain text during requests, protecting against database breaches, with Rails automatically adding :password, :passw, etc., to its filter_parameters list for logging. This stops attackers from seeing even hashed passwords if logs are compromised, adding a layer of defense beyond just hashing itself. 
+
+How it Works:
+Hashing: When a user signs up, has_secure_password uses bcrypt to hash the plain-text password and stores the hash (the password_digest) in the database, not the password itself.
+Logging: When a request comes in (e.g., login), the password_digest is part of the user object, but when Rails logs the request parameters or the object's attributes, it sees the :passw pattern and replaces the actual digest with [FILTERED]. 
+
