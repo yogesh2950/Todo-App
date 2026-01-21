@@ -1,8 +1,28 @@
 Rails.application.routes.draw do
+
+  root "users#new"
+
+  get "/signup", to: "users#new"
+  post "/signup", to: "users#create"
+
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
+  # get "sessions/new"
+  # get "sessions/create"
+  # get "sessions/destroy"
+  # get "users/new"
+  # get "users/create"
+
+  # resources :users, only:
+  # [:new, :create, :show]
+  
+  resources :projects
+
+  
   resources :todos
 
-
-  resources :projects
 
 
   # get "/projects", to: "projects#index"

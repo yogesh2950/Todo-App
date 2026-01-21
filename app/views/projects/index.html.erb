@@ -17,3 +17,6 @@ HTML means the response is HTML, and ERB means that mixing in embedded ruby.  %>
         <li><%= link_to project.name, project_path(project) %></li>
     <% end %>
 </ul>
+
+<%= link_to "New Project", new_project_path, class:"btn" %>
+<%= button_to "Logout", logout_path, method: :delete %>

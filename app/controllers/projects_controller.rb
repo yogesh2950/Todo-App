@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
 
     if @project.save
       flash[:notice] = "Project created successfully!"
-      redirect_to project_path(@project)
+      redirect_to projects_path(@project)
     else
       # returns a status of 422 
       render :new, status: :unprocessable_entity
