@@ -1,0 +1,26 @@
+<%= form_with model: project do |f| %>
+    <% if project.errors.any? %>
+        <div class="errors">
+            <%# 
+                pluralize is a nice rails helper that takes care of wording if there is one error it will say one error prohibited this project from being saved
+                and if there are multiple errors, it'll say two errors prohibited this project from being saved
+                It's just a nice way to get plain language onto the screen
+            %>
+            <h2><%= pluralize(project.errors.count, "error") %> Prohibited </h2>
+            <ul>
+                <% project.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+    <% end %>

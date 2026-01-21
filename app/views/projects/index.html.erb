@@ -1,0 +1,19 @@
+<%# 
+index matches the controller action we just defined i.e project_controller.rb
+
+Rails will hook up the index action to the index view
+
+HTML means the response is HTML, and ERB means that mixing in embedded ruby.  %>
+
+
+
+
+<h1>Projects</h1>
+
+<ul>
+    <%# projects instance variable  which is the variable that we set in controller%>
+    
+    <% @projects.each do |project| %>
+        <li><%= link_to project.name, project_path(project) %></li>
+    <% end %>
+</ul>
