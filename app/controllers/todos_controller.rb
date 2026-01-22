@@ -32,7 +32,7 @@ class TodosController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
-    end
+  end
   end
 
   # PATCH/PUT /todos/1 or /todos/1.json

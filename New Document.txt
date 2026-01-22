@@ -281,7 +281,8 @@ It returns me all Users present in DB.
 #######    User.all.pluck(:password_digest)
 It returns me all User's passwords which are filtered using bcrypt present in DB 
 
-password_digest gets filtered (shown as [FILTERED]) in Rails logs because it's a security measure to prevent sensitive, hashed passwords from being exposed in plain text during requests, protecting against database breaches, with Rails automatically adding :password, :passw, etc., to its filter_parameters list for logging. This stops attackers from seeing even hashed passwords if logs are compromised, adding a layer of defense beyond just hashing itself. 
+password_digest gets filtered (shown as [FILTERED]) in Rails logs because it's a security measure to prevent sensitive, hashed passwords from being exposed in plain text during requests, protecting against database breaches, with Rails automatically adding :password, :passw, etc., to its filter_parameters list for logging. 
+    This stops attackers from seeing even hashed passwords if logs are compromised, adding a layer of defense beyond just hashing itself. 
 
 How it Works:
 Hashing: When a user signs up, has_secure_password uses bcrypt to hash the plain-text password and stores the hash (the password_digest) in the database, not the password itself.

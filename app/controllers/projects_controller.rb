@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-
   # routes => projects#index => index defination
   def index
     # We're calling Project.all because to fetch every project from the database and assigining it to an instance variable called projects so we can use it in our view.
@@ -11,7 +10,8 @@ class ProjectsController < ApplicationController
     # params as something like a dictionary or a map that contains request data, whether it came from the URL, a form or a query string.
     # projects/1
     # params = {"id"=>"1"}
-    #params[:id]
+    # params[:id]
+
     @project = Project.find(params[:id])
   end
 
@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = "Project created successfully!"
       redirect_to projects_path(@project)
     else
-      # returns a status of 422 
+      # returns a status of 422
       render :new, status: :unprocessable_entity
     end
   end
@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = "Project updated successfully"
       redirect_to project_path(@project)
     else
-      # returns a status of 422 
+      # returns a status of 422
       render :edit, status: :unprocessable_entity
     end
   end
@@ -68,5 +68,4 @@ class ProjectsController < ApplicationController
     flash[:notice] = "Project Deleted."
     redirect_to projects_path
   end
-
 end
