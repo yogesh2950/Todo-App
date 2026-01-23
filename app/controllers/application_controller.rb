@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
+  # It validates tokens against the user's session, throwing an error if they mismatch. 
+  
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   # allow_browser versions: :modern
 

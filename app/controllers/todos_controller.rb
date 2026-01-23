@@ -1,5 +1,4 @@
 class TodosController < ApplicationController
-  # before_action :set_todo, only: %i[ show edit update destroy ]
   # before_action :require_login
 
   # GET /todos or /todos.json
@@ -59,6 +58,7 @@ class TodosController < ApplicationController
   end
 
   private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
       @todo = Todo.find(params.expect(:id))

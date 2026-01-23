@@ -31,6 +31,7 @@ class ProjectsController < ApplicationController
 
     if @project.save
       flash[:notice] = "Project created successfully!"
+      # Flash messages in Rails are a way to pass temporary, short-lived messages from the controller to the view,
       redirect_to projects_path(@project)
     else
       # returns a status of 422

@@ -8,8 +8,9 @@ class Api::BaseController < ActionController::API
     token = header.split(" ").last
     if header
       begin
-        decode = JsonWebToken.decode(token)
-        @current_user = User.find(decoded[:user_id])
+        @decode = JsonWebToken.decode(token)
+        pp decode
+        @current_user = User.find(decode[:user_id])
       rescue
         render json: { error: "Unauthorized" }, status: :Unauthorized
       end

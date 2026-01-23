@@ -20,5 +20,7 @@ class SessionsController < ApplicationController
   end
 end
 
+
+# Temp Username and pass
 # test@gmail.com
 # Test@gmail.com

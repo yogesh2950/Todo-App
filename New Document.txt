@@ -59,7 +59,7 @@ bin/rails db:migrate
 
 
 
-
+To delete the project
 rm -rf myapp/
 
 sudo rm -rf myapp/
@@ -125,13 +125,14 @@ sqlite3 development.sqlite3
 5. Routes 
 config > routes 
 
+// To view all routes 
 bin/rails routes 
 
 
 inside routes : 
     get "/projects", to: "projects#index"
 
-after adding routes and search/projects , we get an error because rails is trying to load our projects controller but we haven't actually created it yet.
+after adding routes and search /projects , we get an error because rails is trying to load our projects controller but we haven't actually created it yet.
 
 #### so to add controller we have command
 
@@ -191,7 +192,7 @@ Active Records :
 
 Partial is just a small reusable chunk of Vue Code 
 
-Flash is a special hash thatt rails gives you you can store msgs in it like success or error notice and rails will make them available on the next request. 
+Flash is a special hash that rails gives you, you can store msgs in it like success or error notice and rails will make them available on the next request. 
 
 
 //ERB 
@@ -207,12 +208,22 @@ Controllers are the brains behind the scene
 app>assets => these include css files, javascript, images, 
 config>routes.rb => It is important, anytime we create a webpage it is route.
 
-//To run rails server :3000 port no is default
+                            //To run rails server :3000 port no is default
 rails s 
 rails server
 
+//To generate or create controller
 rails generate controller home index
+
+It will create 
+- home_controller.rb
+- get 'home/index'
+- app/view/home/index.html.erb
+erb => embedded ruby
+
 rails g controller home index
+
+
 
 rails routes
 
@@ -247,10 +258,10 @@ For example:
     Delete user	            DELETE /users/:id	    destroy
 
 
-to check if routes are created or not 
+// to check if routes are created or not 
 rails routes | grep user 
 
-//to create only those routes which are needed.
+// to create only those routes which are needed.
 resources :used do
     resources :post, only: [:create, :new]
 end
@@ -259,6 +270,7 @@ end
 
 rails generate nodel 
 rails generate g
+
 
     //IMPORTANT
 rails db:migrate

@@ -1,16 +1,24 @@
 class Api::ProjectsController < Api::BaseController
   def index
-    render json: Project.all
+    # Fetching all project for a particular user
+
+    projects = Project.find_by(user_id: @current_user.id)
+
+    if projects
+      render json: {status: true, data: projects}, status: :ok
+    else
+      render json: {status: false, message: "No Projects Found"}, status: :not_found
+    end
   end
 
   def create
-    project = Project.new(project_params)
+    projects = Project.new(user_id: @current_user.id)
+    
 
-    if project.save
-      render json: project,
-      status: :created
+    if projects.save
+      render json: {status: true, project: projects}, status: :ok
     else
-      render json: {errors: project.errors.full_messages }, status: :unprocessable_entity
+      render json: {status: false, errors: projects.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
